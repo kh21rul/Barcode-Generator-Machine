@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate QR Code</title>
+</head>
+
+<body>
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <canvas width="100" height="100" style="border: 2px solid black;" id="canvas"></canvas>
+        <label>Paste kan Link Website Disini: <small><i>*enter untuk generate</i></small></label>
+        <input placeholder="contoh: www.youtube.com" id="inputQr" onchange="generateQR()">
+    </div>
+
+    <script src="node_modules/qrcode/build/qrcode.js"></script>
+    <script>
+        function generateQR() {
+            QRCode.toCanvas(document.getElementById('canvas'), document.getElementById('inputQr').value, (err) => {
+                if (err) console.error(err)
+                console.log('Generate Barcode Success')
+            })
+        }
+    </script>
+</body>
+
+</html>
